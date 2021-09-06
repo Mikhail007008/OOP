@@ -1,6 +1,6 @@
 'use strict';
 
-const DomElement = function(selector, height, width, bg, fontSize){
+const DomElement = function(selector = '.ololo', height= '50px', width = '250px', bg = 'tomato', fontSize = '14px'){
 	this.selector = selector;
 	this.height = height;
 	this.width = width;
@@ -13,9 +13,7 @@ DomElement.prototype.foo = function(){
 		let newEl = document.createElement('div');
 		document.body.appendChild(newEl);		
 		newEl.className = (this.selector).slice(1);
-		newEl.style.height = this.height;
-		newEl.style.width = this.width;
-		newEl.style.background = this.bg;
+		newEl.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.bg}`;
 		newEl.style.fontSize = this.fontSize;
 		newEl.innerHTML = '<b>Новый элемент</b>';
 
@@ -23,15 +21,12 @@ DomElement.prototype.foo = function(){
 		let newEl = document.createElement('p');
 		document.body.appendChild(newEl);		
 		newEl.id = (this.selector).slice(1);
-		newEl.style.height = this.height;
-		newEl.style.width = this.width;
-		newEl.style.background = this.bg;
+		newEl.style.cssText = `height: ${this.height}; width: ${this.width}; background: ${this.bg}`;
 		newEl.style.fontSize = this.fontSize;
 		newEl.innerHTML = '<b>Новый элемент</b>';
 	}
 };
 
-let el1 = new DomElement('#block', '50px', '100px', '#fff', '8px');
+let el1 = new DomElement();
 
 el1.foo();
-console.log(el1);
